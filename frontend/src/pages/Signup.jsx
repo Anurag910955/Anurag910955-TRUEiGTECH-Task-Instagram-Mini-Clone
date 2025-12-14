@@ -9,18 +9,23 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); 
 
   const signup = async () => {
+    if (loading) return;
     try {
       if (!username || !email || !password) {
         setError("All fields are required");
         return;
       }
-
+      setLoading(true);
+      setError("");
       await API.post("/auth/signup", { username, email, password });
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Signup failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,8 +54,16 @@ const Signup = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button style={styles.button} onClick={signup}>
-          Signup
+        <button
+          style={{
+            ...styles.button,
+            opacity: loading ? 0.7 : 1,
+            cursor: loading ? "not-allowed" : "pointer"
+          }}
+          onClick={signup}
+          disabled={loading}
+        >
+          {loading ? "Signing up..." : "Signup"}
         </button>
         <p style={styles.footer}>
           Already have an account?{" "}
@@ -62,6 +75,7 @@ const Signup = () => {
     </div>
   );
 };
+
 
 const styles = {
   container: {

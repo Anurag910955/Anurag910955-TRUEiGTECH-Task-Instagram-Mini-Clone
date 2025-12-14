@@ -6,10 +6,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const login = async () => {
+    if (loading) return;
+
     try {
+      setLoading(true);          
+      setError("");
+
       const res = await API.post("/auth/login", { email, password });
 
       localStorage.setItem("token", res.data.token);
@@ -18,6 +24,8 @@ const Login = () => {
       navigate("/feed");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);        
     }
   };
 
@@ -26,24 +34,39 @@ const Login = () => {
       <div style={styles.card}>
         <h2 style={styles.title}>Instagram</h2>
         <p style={styles.subtitle}>Login to your account</p>
+
         {error && <p style={styles.error}>{error}</p>}
+
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           style={styles.input}
+          disabled={loading}
         />
+
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           style={styles.input}
+          disabled={loading}
         />
-        <button onClick={login} style={styles.button}>
-          Login
+
+        <button
+          onClick={login}
+          style={{
+            ...styles.button,
+            opacity: loading ? 0.7 : 1,
+            cursor: loading ? "not-allowed" : "pointer"
+          }}
+          disabled={loading}
+        >
+          {loading ? "Logging in..." : "Login"} 
         </button>
+
         <p style={styles.footerText}>
           New user?{" "}
           <Link to="/signup" style={styles.link}>
