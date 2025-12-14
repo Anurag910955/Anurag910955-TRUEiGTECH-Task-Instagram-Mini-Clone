@@ -85,11 +85,12 @@ Own posts
 
 #screenshots
 <img width="1718" height="814" alt="image" src="https://github.com/user-attachments/assets/8845021b-be29-466a-8931-0f182184a5bd" />
+<img width="1410" height="802" alt="image" src="https://github.com/user-attachments/assets/b60c3d00-efff-4cde-885b-261d55286e1d" />
 <img width="1847" height="792" alt="image" src="https://github.com/user-attachments/assets/b7af8b6c-292f-4365-ad8e-89a2bc8e1423" />
 <img width="1843" height="861" alt="image" src="https://github.com/user-attachments/assets/1b2c4ca3-a429-4b0b-8940-84cd58656b22" />
 <img width="1840" height="774" alt="image" src="https://github.com/user-attachments/assets/591c2b68-b296-4b2d-8176-0edf4902f4f6" />
 <img width="1825" height="683" alt="image" src="https://github.com/user-attachments/assets/9daf9615-b21b-4bab-87c4-1e7fd9322145" />
-<img width="1410" height="802" alt="image" src="https://github.com/user-attachments/assets/b60c3d00-efff-4cde-885b-261d55286e1d" />
+
 
 #How to Run Locally
 1.Backend
