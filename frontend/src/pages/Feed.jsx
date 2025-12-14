@@ -38,7 +38,7 @@ const Feed = () => {
 
   return (
     <div style={styles.page}>
-      <h2 style={styles.heading}>Home Feed</h2>
+      
       {posts.length === 0 && (
         <p style={styles.emptyText}>
           No posts yet. Follow users to see their posts.
