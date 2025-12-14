@@ -88,7 +88,7 @@ router.get("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
       .populate("user", "username")
-      .populate("likes", "username") // ✅ LIKE LIST
+      .populate("likes", "username") 
       .populate({
         path: "comments.user",
         select: "username"
