@@ -8,7 +8,10 @@ connectDB();
 
 app.use(
   cors({
-    origin: "https://anurag910955-tru-ei-gtech-task-inst.vercel.app",
+    origin: [
+      "https://anurag910955-tru-ei-gtech-task-inst.vercel.app",
+      "http://localhost:5173"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   })
